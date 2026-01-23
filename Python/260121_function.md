@@ -224,6 +224,7 @@ def ctp(p, tr):
 
 ## Packing & Unpacking
 함수 호출 시 여러 개의 인자를 하나의 변수로 묶거나, 반대로 하나의 변수에 묶여 있는 값을 여러 개의 변수로 나누는 것을 의미한다.
+![패킹 언패킹 정리 ](../imgs/python_packing.png)
 ### Packing
 기본 원리
 - 여러 개의 값을 하나의 튜플로 묶는 파이썬의 기본 동작
@@ -239,12 +240,42 @@ print(type(packed_value))  # <class 'tuple'>
 - `*args` 형태로 함수 매개변수에 정의
 ```python
 # Packing 예시
-packed_value = 1, 2, 3, 4, 5
-print(packed_value)  # (1, 2, 3, 4, 5)
-print(type(packed_value))  # <class 'tuple'>
+def pack_arguments(*args):
+    print(args)  # 전달된 인자들이 튜플로 저장됨
+    print(type(args))  # <class 'tuple'>
+```
+`**`를 활용한 패킹
+- 남는 키워드 인자들을 하나의 딕셔너리로 묶을 때 사용
+- `**kwargs` 형태로 함수 매개변수에 정의
+```python
+# Packing 예시
+def pack_keyword_arguments(**kwargs):
+    print(kwargs)  # 전달된 키워드 인자들이 딕셔너리로 저장됨
+    print(type(kwargs))  # <class 'dict'>
 ```
 
 ### Unpacking
 기본 원리
 - 튜플이나 리스트와 같은 시퀀스 자료형의 값을 여러 변수에 나누어 할당하는 것
+- 시퀀스 언패킹 또는 다중할당이라고 부름
+- `*`을 활용한 언패킹 (함수 인자 전달)
+```python
+# Unpacking 예시
+def add_numbers(a, b, c):
+    return a + b + c
+numbers = (1, 2, 3)
+names = [4, 5, 6]
+result = add_numbers(*numbers)  # 튜플 언패킹
+result = add_numbers(*names)   # 리스트 언패킹
+print(result)  # 6
+```
+
+- `**`을 활용한 언패킹 (키워드 인자 전달)
+```python
+# Unpacking 예시
+def introduce(name, age, city):
+    return f"My name is {name}, I'm {age} years old and I live in {city}."
+person_info = {'name': 'Alice', 'age': 30, 'city': 'New York'}
+result = introduce(**person_info)  # 딕셔너리 언패킹
+print(result)  # My name is Alice, I'm 30 years old and I live in New York.
 
