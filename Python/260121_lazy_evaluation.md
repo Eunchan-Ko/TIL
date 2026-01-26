@@ -1,6 +1,6 @@
 ---
 date: 2026-01-21
-tags: [Python, Lazy Evaluation, Basics, 게으른 연산]
+tags: [Python, Lazy Evaluation, Basics, 게으른 연산, map()]
 
 ---
 # Lazy Evaluation
