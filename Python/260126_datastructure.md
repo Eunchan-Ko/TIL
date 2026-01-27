@@ -1,6 +1,6 @@
 ---
-date: 2026-01-21
-tags: [Python, mathod, Basics]
+date: 2026-01-26 ~ 27
+tags: [Python, datastructure, method, sequence, Basics]
 
 ---
 
